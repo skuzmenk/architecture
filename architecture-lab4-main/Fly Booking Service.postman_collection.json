@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "d8726d30-6c4c-42f2-8973-f78c9af43759",
+		"name": "Fly Booking Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "226868"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get all Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/accounts/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accounts",
+								"{{id}}"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fly-bookings",
+			"item": [
+				{
+					"name": "Get all fly bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fly-bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fly-bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book fly",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clientName\": \"Nik\", \n    \"flyNumber\": \"KL888\", \n    \"fromCity\":\"IEV\", \n    \"toCity\":\"AMS\", \n    \"fromDate\":\"2027-12-13\",\n    \"accountId\" : \"1\",\n    \"price\" : 10.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fly-bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fly-bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		}
+	]
+}
