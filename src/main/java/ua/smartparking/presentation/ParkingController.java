@@ -12,7 +12,12 @@ public class ParkingController {
     public ParkingController(ParkingService service) {
         this.service = service;
     }
-
+// Додати в ParkingController.java
+@PostMapping("/spots")
+public String addSpot(@RequestParam String number, @RequestParam Long lotId) {
+    service.createSpot(number, lotId);
+    return "Паркомісце " + number + " успішно додано до майданчика ID: " + lotId;
+}
     // Сценарій 1 & 2
     @PostMapping("/book")
     public String book(@RequestParam Long spotId) {
