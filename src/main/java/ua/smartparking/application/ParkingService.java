@@ -63,7 +63,15 @@ public class ParkingService {
     
     return exists;
 }
-
+// Додати в ParkingService.java
+@Transactional
+public Spot createSpot(String spotNumber, Long lotId) {
+    ParkingLot lot = lotRepo.findById(lotId)
+            .orElseThrow(() -> new RuntimeException("Паркувальний майданчик не знайдено"));
+    
+    Spot spot = new Spot(spotNumber, lot);
+    return spotRepo.save(spot);
+}
     // Сценарій 3: Керування інфраструктурою (Перевірка дублікатів)
     @Transactional
     public String createLot(String name, Long ownerId) {
