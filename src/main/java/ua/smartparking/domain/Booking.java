@@ -1,19 +1,19 @@
 package ua.smartparking.domain;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long spotId;
-    private String qrCodeData;
-    private LocalDateTime startTime;
+    private String qrCode;
+    private LocalDateTime time = LocalDateTime.now();
 
-    public Booking(Long id, Long spotId, String qrCodeData) {
-        this.id = id;
+    public Booking() {}
+    public Booking(Long spotId, String qrCode) {
         this.spotId = spotId;
-        this.qrCodeData = qrCodeData;
-        this.startTime = LocalDateTime.now();
+        this.qrCode = qrCode;
     }
-
-    public String getQrCodeData() { return qrCodeData; }
 }
