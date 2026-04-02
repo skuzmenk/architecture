@@ -1,20 +1,23 @@
 package ua.smartparking.domain;
+import jakarta.persistence.*;
 
+@Entity
 public class Spot {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private SpotStatus status;
-    private String address;
+    private String spotNumber;
+    @Enumerated(EnumType.STRING)
+    private SpotStatus status = SpotStatus.FREE;
 
-    public Spot(Long id, String address, SpotStatus status) {
-        this.id = id;
-        this.address = address;
-        this.status = status;
+    @ManyToOne @JoinColumn(name = "parking_lot_id")
+    private ParkingLot parkingLot;
+
+    public Spot() {}
+    public Spot(String spotNumber, ParkingLot parkingLot) {
+        this.spotNumber = spotNumber;
+        this.parkingLot = parkingLot;
     }
-
-    // Геттери та сеттери
     public Long getId() { return id; }
     public SpotStatus getStatus() { return status; }
     public void setStatus(SpotStatus status) { this.status = status; }
-    public String getAddress() { return address; }
-    public boolean isFree() { return this.status == SpotStatus.FREE; }
 }
